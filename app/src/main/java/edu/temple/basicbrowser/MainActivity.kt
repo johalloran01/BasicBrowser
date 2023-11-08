@@ -27,12 +27,24 @@ class MainActivity : AppCompatActivity() {
                 super.onPageFinished(view, url)
             }
         }
+        //Enable javascript
+        webView.settings.javaScriptEnabled = true
 
         //Set onclick listener for send button
         goButton.setOnClickListener {
             val url = urlEditText.text.toString()
-            webView.loadUrl(url)
+            val formatted = formatUrl(url)
+            webView.loadUrl(formatted)
         }
+
+    }
+    //Format Url method
+    private fun formatUrl(url: String): String {
+        var formattedUrl = url
+        if (!url.startsWith("http://") && !url.startsWith("https://")){
+            formattedUrl = "https://$url"
+        }
+        return formattedUrl
 
     }
 }
