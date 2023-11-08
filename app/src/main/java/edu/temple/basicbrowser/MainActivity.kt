@@ -28,5 +28,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //Set onclick listener for send button
+        goButton.setOnClickListener {
+            val url = urlEditText.text.toString()
+            webView.loadUrl(url)
+        }
+
     }
 }
